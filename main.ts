@@ -2,7 +2,7 @@
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace rgbLED {
 
-    let maxRGB = 4;
+    // let maxRGB = 4;
     let neoStrip: neopixel.Strip;
 
     //% blockId=tape_rgb block="连接引脚 %pin| 灯%firstRGB| ~ 灯%lastRGB| ，颜色为 R值 %red| G值 %green| B值 %blue"
@@ -15,16 +15,17 @@ namespace rgbLED {
     //% blue.min=0 blue.max=255
     //% weight=99
     export function setTapeLights(pin: DigitalPin, firstRGB: number, lastRGB:number, red:number, green:number, blue:number): void {
-        if (!neoStrip) {
-            neoStrip = neopixel.create(pin, maxRGB, NeoPixelMode.RGB);
-        }
 
-        if(firstRGB < 1 || firstRGB > maxRGB){
+        if(firstRGB < 1 || firstRGB > lastRGB){
             firstRGB = 1;
         }
 
-        if(lastRGB < 1 || lastRGB > maxRGB){
-            lastRGB = maxRGB;
+        if(lastRGB < 1){
+            lastRGB = 1;
+        }
+
+        if (!neoStrip) {
+            neoStrip = neopixel.create(pin, lastRGB, NeoPixelMode.RGB);
         }
         
         for(let i=firstRGB-1;i<lastRGB;i++){
