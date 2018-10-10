@@ -1,0 +1,14 @@
+{
+    "name": "rgbLED",
+    "dependencies": {
+        "core": "*",
+        "neopixel": "github:microsoft/pxt-neopixel#v0.6.9"
+    },
+    "description": "RGB LED",
+    "icon": "./lights.png",
+    "license": "MIT",
+    "files": [
+        "main.ts"
+    ],
+    "public": true
+}
